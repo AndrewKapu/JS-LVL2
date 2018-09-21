@@ -23,7 +23,10 @@ let text1 = 'One: ‘Hi Mary.’ Two: \'Oh, hi.\'\n' +
     'Two: \'I\'ll see you next time.\'\n' +
     'One: \'Sure. Bye.\'';
 
-console.log(text1.replace(/'/g,'"'));
+text1 = text1.replace(/'/g,'"');
+console.log(text1);
+console.log(text1.match(/\w+["]\w+/));
+console.log(text1.replace(/(\w)(")(\w)/g, "$1'$3"));
 </script>
 </body>
 </html>
