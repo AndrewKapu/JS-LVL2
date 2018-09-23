@@ -64,7 +64,7 @@ class ValidationForm {
         field.parentNode.appendChild(errMsg);
     }
     /**
-     * Функция правильность при вводе
+     * Функция проверяет правильность при вводе
      * @param {HTMLElement} field Проверяемый input
      * @private
      */
