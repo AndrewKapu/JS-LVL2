@@ -2,21 +2,37 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <script src="validation.js"></script>
     <meta charset="UTF-8">
     <title>Task3</title>
 </head>
 <body>
-<form action="#" method="post" id="myform">
-    <label for="phone">Ваш телефон</label>
-    <div><input type="text" id="phone" placeholder="+7(000)000-0000"></div>
-    <label for="email">Ваша почта</label>
-    <div><input type="email" id="email" placeholder="mymail@mail.ru"></div>
+<form action="#" method="post" id="myform" class="some">
+    <div>
+        <label for="phone">Ваше имя</label>
+        <input type="text" id="name" name="name" placeholder="John">
+    </div>
+    <div>
+        <label for="phone">Ваш телефон</label>
+        <input type="text" id="phone" placeholder="+7(000)000-0000" name="phone">
+    </div>
+    <div>
+        <label for="email">Ваша почта</label>
+        <input type="email" id="email" placeholder="mymail@mail.ru" name="email">
+    </div>
     <label for="textarea">Ваши пожелания</label> <br>
     <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
     <div>
         <button type="submit">Полетели!</button>
     </div>
 </form>
+<script src="validation.js"></script>
+<script>
+    window.onload = () => {
+        document.getElementById('myform').addEventListener('submit', event => {
+            event.preventDefault();
+            let valid = new ValidationForm('myform');
+        })
+    }
+</script>
 </body>
 </html>
