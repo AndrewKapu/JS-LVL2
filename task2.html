@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<select name="cities" id="select">
+
+</select>
+
+<script>
+    window.onload = () => {
+        $.ajax({
+            url: 'russiaLocality.json',
+            type: 'GET',
+            datType: 'json',
+            success: function (data) {
+                //console.log(data.data[0].name);
+                for (let i = 0; i < data.data.length; i++) {
+                    $('#select').append(`<option>${data.data[i].name}</option>`)
+                }
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
