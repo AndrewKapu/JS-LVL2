@@ -26,10 +26,13 @@ class Cart {
         let $container = $('<div/>', {
             class: 'cart-item',
             'data-product': product.id_product
+        }).on('click', '.remove-btn', event => {
+            this._removeProduct(event);
         });
         $container.append($(`<p class="product-name">${product.product_name}</p>`));
         $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
         $container.append($(`<p class="product-price">${product.price} руб.</p>`));
+        $container.append($(`<button class="remove-btn">Удалить товар</button>`));
         $('.cart-items-wrap').append($container);
     }
     _renderSum(amount, countGoods){
@@ -79,7 +82,21 @@ class Cart {
         this._renderSum(this.amount, this.countGoods);
 
     }
+
+    /**
+     * Функция удаления продукта из корзины
+     * @param {event} event Событие клика по элементу
+     * @private
+     */
     _removeProduct(event){
-        //TODO: добавить удаление товара
+        for (let i = 0; i < this.cartItems.length; i++) {
+            if (this.cartItems[i].id_product == event.target.parentNode.getAttribute('data-product')) {
+                console.log(this.cartItems[i]);
+                this.cartItems.splice(i, 1);
+                console.log(this.cartItems);
+            }
+        }
+        event.target.parentNode.remove();
+
     }
 }
