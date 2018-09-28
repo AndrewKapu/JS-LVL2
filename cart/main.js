@@ -7,4 +7,5 @@ $(document).ready(() => {
    $('.buyBtn').click(e => {
        mycart._addProduct(e.target);
    })
+    let feedback = new Feedback('feedback.json');
 });
