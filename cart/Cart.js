@@ -84,19 +84,29 @@ class Cart {
     }
 
     /**
-     * Функция удаления продукта из корзины
+     * Функция удаления продукта ПО ОДНОМУ из корзины
      * @param {event} event Событие клика по элементу
      * @private
      */
     _removeProduct(event){
         for (let i = 0; i < this.cartItems.length; i++) {
+            //находим в cartItems[] соответствующий товар и работаем с ним в цикле
             if (this.cartItems[i].id_product == event.target.parentNode.getAttribute('data-product')) {
-                console.log(this.cartItems[i]);
-                this.cartItems.splice(i, 1);
-                console.log(this.cartItems);
+                this.cartItems[i].quantity--;
+                this.amount = this.amount - this.cartItems[i].price;
+                this.countGoods = this.countGoods - 1;
+                this._renderSum(this.amount, this.countGoods);
+
+                if (this.cartItems[i].quantity < 1) {
+                    this.cartItems.splice(i, 1);
+                    //удление DOM элемента с товаром
+                    event.target.parentNode.remove();
+                    console.log(this.cartItems);
+                } else {
+                    this._updateCart(this.cartItems[i]);
+                }
             }
         }
-        event.target.parentNode.remove();
 
     }
 }
