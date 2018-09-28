@@ -1,5 +1,5 @@
 class Feedback {
-    constructor(source, container = 'feedbackWrapper') {
+    constructor(source, container = '#feedbackWrapper') {
         this.source = source;
         this.container = container;
         this.reviews = [];
