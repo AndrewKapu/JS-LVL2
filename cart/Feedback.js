@@ -14,7 +14,8 @@ class Feedback {
                     this.reviews.push(review);
                     this._renderReview(review);
                 }
-            })
+            });
+        this._renderForm(this.container);
     }
 
     _renderReview(review) {
@@ -29,6 +30,20 @@ class Feedback {
 
         $customerName.append(`${review.author}`);
         $customerReview.append(`${review.text}`);
+    }
+
+    _renderForm(container) {
+        let $reviewForm = $('<form/>', {
+            class: 'feedback-form'
+        });
+        let $reviewInput = $('<input>', {
+            type: 'name'
+        });
+        let $reviewText = $('<textarea>');
+        $reviewForm.append($reviewInput);
+        $reviewForm.append($reviewText);
+        $(container).append($reviewForm);
+
     }
 
 }

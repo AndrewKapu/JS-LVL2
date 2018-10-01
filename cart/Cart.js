@@ -42,6 +42,7 @@ class Cart {
     }
     _init(source){
         this._render();
+        this._dragDrop();
         fetch(source)
             .then(result => result.json())
             .then(data => {
@@ -101,12 +102,31 @@ class Cart {
                     this.cartItems.splice(i, 1);
                     //удление DOM элемента с товаром
                     event.target.parentNode.remove();
-                    console.log(this.cartItems);
                 } else {
                     this._updateCart(this.cartItems[i]);
                 }
             }
         }
 
+    }
+    _dragDrop() {
+        $('.product').draggable({
+            revert: true,
+            tolerance: "touch",
+        });
+        $('#cart')
+            .droppable({
+                tolerance: "touch",
+                activate: function (event, ui) {
+                    console.log(event);
+                    console.log(ui.draggable.find('.buyBtn'));
+                },
+
+            })
+            /*.on( "drop", function( event, ui ) {
+                console.log(event);
+                console.log(ui.draggable.find('.buyBtn'));
+                this._addProduct(ui.draggable.find('.buyBtn'));
+            })*/
     }
 }

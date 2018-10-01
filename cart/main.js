@@ -4,7 +4,8 @@ $(document).ready(() => {
    let product3 = new Product(125, 'Мышь для ПК', 600);
 
    let mycart = new Cart('getCart.json');
-   $('.buyBtn').click(e => {
+   $('.buyBtn')
+       .click(e => {
        mycart._addProduct(e.target);
    })
     let feedback = new Feedback('feedback.json');
