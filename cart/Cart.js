@@ -117,16 +117,11 @@ class Cart {
         $('#cart')
             .droppable({
                 tolerance: "touch",
-                activate: function (event, ui) {
-                    console.log(event);
-                    console.log(ui.draggable.find('.buyBtn'));
-                },
+                drop: (event, ui) => {
+                    this._addProduct(ui.draggable.find('.buyBtn'));
+                }
 
             })
-            /*.on( "drop", function( event, ui ) {
-                console.log(event);
-                console.log(ui.draggable.find('.buyBtn'));
-                this._addProduct(ui.draggable.find('.buyBtn'));
-            })*/
+
     }
 }
